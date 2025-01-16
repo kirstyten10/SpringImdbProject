@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<form action="#" th:action="@{/}" th:object="${movies}" method="post">
+    <table>
+        <tr>
+            <td>Movie Search:</td>
+            <td><input type="text" th:field="*{primaryTitle}" /></td>
+            <td th:if="${#fields.hasErrors('primaryTitle')}" th:errors="*{primaryTitle}">Name Error</td>
+        </tr>
+            <td><button type="submit">Submit</button></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
