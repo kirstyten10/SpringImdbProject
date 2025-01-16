@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Data
 @NoArgsConstructor
@@ -26,9 +28,23 @@ public class Movies {
     @Column(length = 255, nullable = false)
     private String primaryTitle; // Main title of the movie
 
+    @Column(length = 255)
+    private String originalTitle; // Original title in the original language
+
+    @Column(nullable = false)
+    private boolean isAdult; // Whether the title is adult content
+
     @Column(nullable = false)
     private Integer startYear; // Year the movie started/released
 
+    @Column
+    private Integer endYear; // End year for TV Series (nullable for other types)
+
     @Column(nullable = true)
     private Integer runtimeMinutes; // Duration of the movie in minutes
+
+    @ElementCollection
+    @CollectionTable(name = "movie_genres", joinColumns = @JoinColumn(name = "movie_id"))
+    @Column(name = "genre")
+    private List<String> genres; // Genres associated with the movie
 }

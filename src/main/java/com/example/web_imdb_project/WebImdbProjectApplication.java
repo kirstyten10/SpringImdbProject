@@ -29,7 +29,7 @@ public class WebImdbProjectApplication {
 				int lineCount = 0;
 				int processedRows = 0;
 
-				while ((line = reader.readLine()) != null && processedRows < 20) {
+				while ((line = reader.readLine()) != null && processedRows < 200) {
 					// Skip the header row
 					if (lineCount == 0) {
 						lineCount++;
