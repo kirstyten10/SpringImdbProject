@@ -1,35 +1,34 @@
 package com.example.web_imdb_project;
 
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Movies {
 
-    private String tconst;
-    private String titleType;
-    private String primaryTitle;
-    private Integer startYear;
-    private Integer runtimeMinutes;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id; // Primary key, auto-generated
 
-    public String getTconst() {
-        return tconst;
-    }
+    @Column(length = 20, nullable = false, unique = true)
+    private String tconst; // Unique identifier for the movie
 
-    public String setTitleType() {
-        return titleType;
-    }
+    @Column(length = 50, nullable = false)
+    private String titleType; // Type of title (e.g., movie, short, TV series)
 
-    public String getPrimaryTitle() {
-        return primaryTitle;
-    }
+    @Column(length = 255, nullable = false)
+    private String primaryTitle; // Main title of the movie
 
-    public Integer getStartYear() {
-        return startYear;
-    }
+    @Column(nullable = false)
+    private Integer startYear; // Year the movie started/released
 
-    public Integer getRuntimeMinutes() {
-        return runtimeMinutes;
-    }
-
+    @Column(nullable = true)
+    private Integer runtimeMinutes; // Duration of the movie in minutes
 }
