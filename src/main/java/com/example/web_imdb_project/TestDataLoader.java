@@ -7,26 +7,17 @@ import org.springframework.stereotype.Component;
 @Component
 public class TestDataLoader {
 
+    private final WebImdbProjectApplication application; // Inject WebImdbProjectApplication
+
+    public TestDataLoader(WebImdbProjectApplication application) {
+        this.application = application;
+    }
+
     @Bean
-    CommandLineRunner initData(MoviesRepository repository) {
+    CommandLineRunner initData() {
         return args -> {
-            repository.save(Movies.builder()
-                    .tconst("tt0000001")
-                    .titleType("movie")
-                    .primaryTitle("Test Movie 1")
-                    .startYear(2025)
-                    .runtimeMinutes(120)
-                    .build());
-
-            repository.save(Movies.builder()
-                    .tconst("tt0000002")
-                    .titleType("short")
-                    .primaryTitle("Test Short 1")
-                    .startYear(2023)
-                    .runtimeMinutes(15)
-                    .build());
-
-            System.out.println("Sample data inserted into H2 database.");
+            application.readAndSaveData(); // Corrected method call
+            System.out.println("Data from title_basics.tsv has been imported.");
         };
     }
 }
