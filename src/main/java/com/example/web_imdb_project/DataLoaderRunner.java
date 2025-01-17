@@ -8,7 +8,6 @@ public class DataLoaderRunner implements CommandLineRunner {
 
     private final WebImdbProjectApplication webImdbProjectApplication;
 
-    // Injecting the WebImdbProjectApplication to access readAndSaveData method
     public DataLoaderRunner(WebImdbProjectApplication webImdbProjectApplication) {
         this.webImdbProjectApplication = webImdbProjectApplication;
     }
@@ -16,6 +15,6 @@ public class DataLoaderRunner implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         // Call the readAndSaveData method to read the file and insert data into H2
-        webImdbProjectApplication.readAndSaveData(); // Corrected method call
+        webImdbProjectApplication.readAndSaveData();
     }
 }

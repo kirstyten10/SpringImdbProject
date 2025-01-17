@@ -16,9 +16,6 @@ import java.util.List;
 public class Movies {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id; // Primary key, auto-generated
-
     @Column(length = 20, nullable = false, unique = true)
     private String tconst; // Unique identifier for the movie
 
@@ -48,3 +45,4 @@ public class Movies {
     @Column(name = "genre")
     private List<String> genres; // Genres associated with the movie
 }
+

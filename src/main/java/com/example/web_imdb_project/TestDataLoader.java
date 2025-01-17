@@ -1,3 +1,4 @@
+/*
 package com.example.web_imdb_project;
 
 import org.springframework.boot.CommandLineRunner;
@@ -21,3 +22,6 @@ public class TestDataLoader {
         };
     }
 }
+
+
+ */

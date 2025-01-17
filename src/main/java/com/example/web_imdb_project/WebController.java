@@ -1,7 +1,6 @@
 package com.example.web_imdb_project;
 
 import jakarta.validation.Valid;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
