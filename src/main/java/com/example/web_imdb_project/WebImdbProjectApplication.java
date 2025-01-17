@@ -8,6 +8,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.List;
 
 @SpringBootApplication
 public class WebImdbProjectApplication {
@@ -29,7 +31,7 @@ public class WebImdbProjectApplication {
                 int lineCount = 0;
                 int processedRows = 0;
 
-                while ((line = reader.readLine()) != null && processedRows < 200) {
+                while ((line = reader.readLine()) != null && processedRows < 100000) {
                     // Skip the header row
                     if (lineCount == 0) {
                         lineCount++;
@@ -39,38 +41,29 @@ public class WebImdbProjectApplication {
                     // Split each line by tab character
                     String[] columns = line.split("\t");
 
-                    //MIGHT NOT NEED
-                    // Skip empty lines and invalid data
-                    //if (columns.length < 5 || line.trim().isEmpty()) {
-                    //	continue;
-                    //}
-
                     // Extract the fields
                     String tconst = columns[0].trim();
                     String titleType = columns[1].trim();
                     String primaryTitle = columns[2].trim();
                     String originalTitle = columns[3].trim();
-                    boolean isAdult = false;
-                    int startYear = 0;
-                    int endYear = 0;
-                    int runtimeMinutes = 0;
+                    boolean isAdult = "1".equals(columns[4].trim()); // 1 = true, 0 = false
 
-					/* MIGHT NOT NEED
-					// Parse startYear safely
-					try {
-						startYear = columns[5].isEmpty() ? 0 : Integer.parseInt(columns[5].trim());
-					} catch (NumberFormatException e) {
-						System.err.println("Invalid startYear value: " + columns[5] + " for tconst: " + tconst);
-					}
+                    // Safely parse `startYear`
+                    Integer startYear = parseInteger(columns[5].trim()); // Assuming column 5 is startYear
+                    if (startYear == null) {
+                        startYear = 0;
+                        //System.err.println("Missing or invalid startYear for tconst: " + tconst);
+                    }
 
-					// Parse runtimeMinutes safely
-					try {
-						runtimeMinutes = columns[8].isEmpty() ? null : Integer.parseInt(columns[8].trim());
-					} catch (NumberFormatException e) {
-						System.err.println("Invalid runtimeMinutes value: " + columns[8] + " for tconst: " + tconst);
-					}
+                    // Safely parse `endYear`
+                    Integer endYear = parseInteger(columns[6]);
 
-					 */
+                    // Safely parse `runtimeMinutes`
+                    Integer runtimeMinutes = parseInteger(columns[7]);
+
+                    // Parse genres (optional)
+                    String[] genreArray = columns[8].split(",");
+                    List<String> genres = Arrays.asList(genreArray);
 
                     // Check for duplicates before saving
                     if (!moviesRepository.existsByTconst(tconst)) {
@@ -101,4 +94,15 @@ public class WebImdbProjectApplication {
             System.err.println("Error reading the file: " + e.getMessage());
         }
     }
+    private Integer parseInteger(String value) {
+        try {
+            return (value != null && !value.equals("\\N") && !value.isEmpty())
+                    ? Integer.parseInt(value.trim())
+                    : null;
+        } catch (NumberFormatException e) {
+            System.err.println("Invalid integer value: " + value);
+            return null;
+        }
+    }
+
 }

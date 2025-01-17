@@ -31,8 +31,8 @@ public class Movies {
     @Column(nullable = false)
     private boolean isAdult; // Whether the title is adult content
 
-    @Column(nullable = false)
-    private Integer startYear; // Year the movie started/released
+    @Column(nullable = true) // Allow NULL values
+    private Integer startYear;
 
     @Column
     private Integer endYear; // End year for TV Series (nullable for other types)
