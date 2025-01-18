@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>IMDB Search</title>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+</head>
+<body>
+<h1>Search for Movies</h1>
+
+<form action="#" method="get" th:action="@{/search}">
+    <label for="query">Movie Title:</label>
+    <input id="query" name="query" type="text"/>
+    <button type="submit">Search</button>
+</form>
+
+<h2>Results</h2>
+<div th:if="${movies}">
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Start Year</th>
+            <th>End Year</th>
+            <th>Runtime</th>
+        </tr>
+        <tr th:each="movie : ${movies}">
+            <td th:text="${movie.primaryTitle}">Movie Title</td>
+            <td th:text="${movie.startYear}">Start Year</td>
+            <td th:text="${movie.endYear != null ? movie.endYear : 'N/A'}"></td>
+            <td th:text="${movie.runtimeMinutes}">Runtime</td>
+        </tr>
+    </table>
+</div>
+
+<div th:if="${#lists.isEmpty(movies)}">
+    <p>No results found.</p>
+</div>
+</body>
+</html>

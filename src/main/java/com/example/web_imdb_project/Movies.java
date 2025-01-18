@@ -17,32 +17,32 @@ public class Movies {
 
     @Id
     @Column(length = 20, nullable = false, unique = true)
-    private String tconst; // Unique identifier for the movie
+    private String tconst;
 
     @Column(length = 50, nullable = false)
-    private String titleType; // Type of title (e.g., movie, short, TV series)
+    private String titleType;
 
     @Column(length = 255, nullable = false)
-    private String primaryTitle; // Main title of the movie
+    private String primaryTitle;
 
     @Column(length = 255)
-    private String originalTitle; // Original title in the original language
+    private String originalTitle;
 
     @Column(nullable = false)
-    private boolean isAdult; // Whether the title is adult content
+    private boolean isAdult;
 
-    @Column(nullable = true) // Allow NULL values
+    @Column(nullable = true)
     private Integer startYear;
 
     @Column
-    private Integer endYear; // End year for TV Series (nullable for other types)
+    private Integer endYear;
 
     @Column(nullable = true)
-    private Integer runtimeMinutes; // Duration of the movie in minutes
+    private Integer runtimeMinutes;
 
     @ElementCollection
     @CollectionTable(name = "movie_genres", joinColumns = @JoinColumn(name = "movie_id"))
     @Column(name = "genre")
-    private List<String> genres; // Genres associated with the movie
+    private List<String> genres;
 }
 

@@ -46,42 +46,36 @@ public class WebImdbProjectApplication {
                     String titleType = columns[1].trim();
                     String primaryTitle = columns[2].trim();
                     String originalTitle = columns[3].trim();
-                    boolean isAdult = "1".equals(columns[4].trim()); // 1 = true, 0 = false
+                    boolean isAdult = "1".equals(columns[4].trim());
 
-                    // Safely parse `startYear`
-                    Integer startYear = parseInteger(columns[5].trim()); // Assuming column 5 is startYear
+                    // Parse startYear
+                    Integer startYear = parseInteger(columns[5].trim());
                     if (startYear == null) {
                         startYear = 0;
-                        //System.err.println("Missing or invalid startYear for tconst: " + tconst);
                     }
 
-                    // Safely parse `endYear`
+                    // Parse endYear
                     Integer endYear = parseInteger(columns[6]);
 
-                    // Safely parse `runtimeMinutes`
+                    // Parse runtimeMinutes
                     Integer runtimeMinutes = parseInteger(columns[7]);
 
-                    // Parse genres (optional)
+                    // Parse genres
                     String[] genreArray = columns[8].split(",");
                     List<String> genres = Arrays.asList(genreArray);
 
-                    // Check for duplicates before saving
-                    if (!moviesRepository.existsByTconst(tconst)) {
-                        // Save to the database
-                        moviesRepository.save(Movies.builder()
-                                .tconst(tconst)
-                                .titleType(titleType)
-                                .primaryTitle(primaryTitle)
-                                .originalTitle(originalTitle)
-                                .isAdult(isAdult)
-                                .startYear(startYear)
-                                .endYear(endYear)
-                                .runtimeMinutes(runtimeMinutes)
-                                .build());
-                        processedRows++;
-                    } else {
-                        System.out.println("Skipping duplicate entry for tconst: " + tconst);
-                    }
+                    // Save to the database
+                    moviesRepository.save(Movies.builder()
+                            .tconst(tconst)
+                            .titleType(titleType)
+                            .primaryTitle(primaryTitle)
+                            .originalTitle(originalTitle)
+                            .isAdult(isAdult)
+                            .startYear(startYear)
+                            .endYear(endYear)
+                            .runtimeMinutes(runtimeMinutes)
+                            .build());
+                    processedRows++;
 
                     lineCount++;
                 }
@@ -94,6 +88,7 @@ public class WebImdbProjectApplication {
             System.err.println("Error reading the file: " + e.getMessage());
         }
     }
+
     private Integer parseInteger(String value) {
         try {
             return (value != null && !value.equals("\\N") && !value.isEmpty())
