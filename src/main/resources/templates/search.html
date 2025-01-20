@@ -20,15 +20,19 @@
     <table>
         <tr>
             <th>Title</th>
+            <th>Type</th>
             <th>Start Year</th>
             <th>End Year</th>
             <th>Runtime</th>
+            <th>Adult Only</th>
         </tr>
         <tr th:each="movie : ${movies}">
             <td th:text="${movie.primaryTitle}">Movie Title</td>
+            <td th:text="${movie.titleType}">Movie Type</td>
             <td th:text="${movie.startYear}">Start Year</td>
             <td th:text="${movie.endYear != null ? movie.endYear : 'N/A'}"></td>
             <td th:text="${movie.runtimeMinutes}">Runtime</td>
+            <td th:text="${movie.isAdult}">Adult Only</td>
         </tr>
     </table>
 </div>

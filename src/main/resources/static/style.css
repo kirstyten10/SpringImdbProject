@@ -3,18 +3,18 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 20px;
-  background-color: #f5f5f5;
+  background-color: #0c0b00;
   color: #333;
 }
 
 /* Heading styling */
 h1 {
-  color: #444;
+  color: #deb522;
   margin-bottom: 20px;
 }
 
 h2 {
-  color: #444;
+  color: #fcf7f7;
   margin-bottom: 20px;
 }
 
@@ -28,11 +28,12 @@ table {
 table th, table td {
   border: 1px solid #ccc;
   padding: 10px;
-  text-align: left;
+  text-align: center;
 }
 
 table th {
-  background-color: #f0f0f0;
+  background-color: #0c0b00;
+  color: #deb522
 }
 
 table tr:nth-child(even) {
@@ -41,9 +42,9 @@ table tr:nth-child(even) {
 
 /* Form styling */
 form {
-  background-color: #fff;
+  background-color: #8A8A8A;
   padding: 20px;
-  border: 1px solid #ddd;
+  border: 0px solid #ddd;
   border-radius: 5px;
   max-width: 500px;
 }
@@ -53,7 +54,7 @@ form table {
 }
 
 form input, form select, form button {
-  width: 100%;
+  width: 90%;
   padding: 8px;
   margin-bottom: 10px;
   border: 1px solid #ccc;
@@ -61,12 +62,18 @@ form input, form select, form button {
 }
 
 form button {
-  background-color: #007bff;
-  color: #fff;
+  background-color: #3F4244;
+  color: #128bb5;
   border: none;
   cursor: pointer;
+  border-radius: 12px;
+  font-weight: bold
 }
 
 form button:hover {
   background-color: #0056b3;
+}
+
+label {
+    font-weight: bold;
 }
