@@ -31,7 +31,7 @@ public class WebImdbProjectApplication {
                 int lineCount = 0;
                 int processedRows = 0;
 
-                while ((line = reader.readLine()) != null && processedRows < 810000) {
+                while ((line = reader.readLine()) != null && processedRows < 100) {
                     // Skip the header row
                     if (lineCount == 0) {
                         lineCount++;
@@ -42,10 +42,16 @@ public class WebImdbProjectApplication {
                     String[] columns = line.split("\t");
 
                     // Extract the fields
-                    String tconst = columns[0].trim();
-                    String titleType = columns[1].trim();
-                    String primaryTitle = columns[2].trim();
-                    String originalTitle = columns[3].trim();
+                    String tconst = cleanString(columns[0]);
+                    String titleType = cleanString(columns[1]);
+                    String primaryTitle = cleanString(columns[2]);
+                    String originalTitle = cleanString(columns[3]);
+
+                    if (tconst.isEmpty() || primaryTitle.isEmpty()) {
+                        System.out.println("Skipping line due to missing essential data: " + line);
+                        continue; // Skip this row if 'tconst' or 'primaryTitle' is empty
+                    }
+
                     boolean isAdult = "1".equals(columns[4].trim());
 
                     // Parse startYear
@@ -54,14 +60,16 @@ public class WebImdbProjectApplication {
                         startYear = 0;
                     }
 
-                    // Parse endYear
                     Integer endYear = parseInteger(columns[6]);
+                    if (endYear == null) {
+                        endYear = 0; // Default to 0 if endYear is missing or invalid
+                    }
 
                     // Parse runtimeMinutes
                     Integer runtimeMinutes = parseInteger(columns[7]);
 
-                    // Parse genres
-                    String[] genreArray = columns[8].split(",");
+                    // Clean and validate genres
+                    String[] genreArray = cleanGenres(columns[8]);
                     List<String> genres = Arrays.asList(genreArray);
 
                     // Save to the database
@@ -87,6 +95,19 @@ public class WebImdbProjectApplication {
         } catch (IOException e) {
             System.err.println("Error reading the file: " + e.getMessage());
         }
+    }
+
+    // Clean strings by trimming and handling nulls
+    private String cleanString(String value) {
+        return (value != null && !value.trim().isEmpty() && !"\\N".equals(value.trim())) ? value.trim() : "";
+    }
+
+    // Clean and handle genres (removes empty or invalid genres)
+    private String[] cleanGenres(String genreString) {
+        if (genreString == null || genreString.isEmpty() || "\\N".equals(genreString)) {
+            return new String[0]; // Return empty array if genres are missing or invalid
+        }
+        return genreString.split(",");
     }
 
     private Integer parseInteger(String value) {

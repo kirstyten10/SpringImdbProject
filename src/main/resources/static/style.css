@@ -33,7 +33,7 @@ table th, table td {
 }
 
 table th {
-  color: #deb522
+  color: #deb522;
 }
 
 table tr:nth-child(even) {
@@ -68,7 +68,7 @@ form button {
   border: none;
   cursor: pointer;
   border-radius: 12px;
-  font-weight: bold
+  font-weight: bold;
 }
 
 form button:hover {
@@ -76,9 +76,42 @@ form button:hover {
 }
 
 label {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 p {
-    color: #fcf7f7
+  color: #fcf7f7;
+}
+
+/* Styling for the movie details */
+.movie-details {
+  background-color: #fcf7f7;
+  color: #fcf7f7;
+  padding: 20px;
+  border-radius: 25px;
+  margin-top: 1px;
+  border: 1px solid #0c0b00;
+}
+
+.movie-item {
+  margin-bottom: 1px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.movie-item h3 {
+  color: #0c0b00;
+}
+
+.movie-item p {
+  color: #0c0b00;
+}
+
+.movie-item a {
+  color: #deb522;
+}
+
+.movie-item a:hover {
+  color: #128bb5;
+  text-decoration: underline;
 }
