@@ -11,7 +11,7 @@
 <div th:if="${movie}">
   <h2 th:text="${movie.primaryTitle}">Movie Title</h2>
   <p><strong>Original Title:</strong> <span th:text="${movie.originalTitle}">Original Title</span></p>
-  <p><strong>Type:</strong> <span th:text="${movie.titleType}">Type</span></p>
+  <p><strong>Type:</strong> <span th:text="${movie.titleType}">Title Type</span></p>
   <p><strong>Start Year:</strong> <span th:text="${movie.startYear}">Start Year</span></p>
   <p><strong>End Year:</strong> <span th:text="${movie.endYear != null ? movie.endYear : 'N/A'}">End Year</span></p>
   <p><strong>Runtime:</strong> <span th:text="${movie.runtimeMinutes}">Runtime</span> minutes</p>

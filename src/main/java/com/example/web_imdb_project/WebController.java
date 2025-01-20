@@ -20,7 +20,7 @@ public class WebController {
     @GetMapping("/search")
     public String searchMovies(@RequestParam(name = "query", required = false) String query, Model model) {
         if (query != null && !query.isEmpty()) {
-            List<Movies> searchResults = moviesRepository.findByPrimaryTitleOrTitleType(query, query);
+            List<Movies> searchResults = moviesRepository.searchMovies(query);
             model.addAttribute("movies", searchResults);
         }
         return "search";
@@ -36,4 +36,12 @@ public class WebController {
         model.addAttribute("error", "Movie not found.");
         return "error";
     }
+
+    /*
+    public String searchParam() {
+        @Query("SELECT u FROM User u WHERE u.status = 1")
+        Collection<Movies> findAllActiveUsers();
+    }
+    */
+
 }

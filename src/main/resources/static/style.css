@@ -37,7 +37,7 @@ table th {
 }
 
 table tr:nth-child(even) {
-  background-color: ##f3f3f3;
+  background-color: #f3f3f3;
 }
 
 /* Form styling */
@@ -46,7 +46,8 @@ form {
   padding: 20px;
   border: 0px solid #ddd;
   border-radius: 5px;
-  max-width: 500px;
+  max-width: 50%;
+  width: 100%;
 }
 
 form table {
@@ -54,8 +55,8 @@ form table {
 }
 
 form input, form select, form button {
-  width: 90%;
-  padding: 8px;
+  width: 100%;
+  padding: 4px;
   margin-bottom: 10px;
   border: 1px solid #ccc;
   border-radius: 3px;
