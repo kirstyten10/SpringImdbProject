@@ -32,9 +32,9 @@ public class Movies {
 
     private Integer runtimeMinutes;
 
-    @ElementCollection
-    @CollectionTable(name = "movie_genres", joinColumns = @JoinColumn(name = "movie_id"))
-    @Column(name = "genre")
-    private List<String> genres;
+    //@ElementCollection
+    //@CollectionTable(name = "movie_genres", joinColumns = @JoinColumn(name = "movie_id"))
+    //@Column(name = "genre")
+    //private List<String> genres;
 }
 
