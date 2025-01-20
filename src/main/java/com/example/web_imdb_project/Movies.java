@@ -16,28 +16,20 @@ import java.util.List;
 public class Movies {
 
     @Id
-    @Column(length = 20, nullable = false, unique = true)
     private String tconst;
 
-    @Column(length = 50, nullable = false)
     private String titleType;
 
-    @Column(length = 255, nullable = false)
     private String primaryTitle;
 
-    @Column(length = 255)
     private String originalTitle;
 
-    @Column(nullable = false)
     private boolean isAdult;
 
-    @Column(nullable = true)
     private Integer startYear;
 
-    @Column
     private Integer endYear;
 
-    @Column(nullable = true)
     private Integer runtimeMinutes;
 
     @ElementCollection

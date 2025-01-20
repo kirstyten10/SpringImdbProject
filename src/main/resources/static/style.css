@@ -23,6 +23,7 @@ table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
+  background-color: #f3f3f3;
 }
 
 table th, table td {
@@ -32,12 +33,11 @@ table th, table td {
 }
 
 table th {
-  background-color: #0c0b00;
   color: #deb522
 }
 
 table tr:nth-child(even) {
-  background-color: #fafafa;
+  background-color: ##f3f3f3;
 }
 
 /* Form styling */
@@ -76,4 +76,8 @@ form button:hover {
 
 label {
     font-weight: bold;
+}
+
+p {
+    color: #fcf7f7
 }

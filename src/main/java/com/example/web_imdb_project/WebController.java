@@ -20,7 +20,7 @@ public class WebController {
     public String searchMovies(@RequestParam(name = "query", required = false) String query, Model model) {
         if (query != null && !query.isEmpty()) {
             // Search movies by primary title
-            List<Movies> searchResults = moviesRepository.findByPrimaryTitle(query);
+            List<Movies> searchResults = moviesRepository.findByPrimaryTitleOrTitleType(query, query);
             model.addAttribute("movies", searchResults);
         }
         return "search";
