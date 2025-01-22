@@ -3,7 +3,7 @@
 <head>
     <title>IMDB Search</title>
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
-    <link rel="stylesheet" href="/style.css" />
+    <link href="/style.css" rel="stylesheet"/>
 </head>
 <body>
 <h1>Search for Movies</h1>
@@ -17,12 +17,14 @@
 <h2>Results</h2>
 <div th:if="${movies}">
     <ul class="movie-list">
-        <li th:each="movie : ${movies}" class="movie-item">
+        <li class="movie-item" th:each="movie : ${movies}">
             <div class="movie-details">
-                <h3><a th:href="@{/movie/{tconst}(tconst=${movie.tconst})}" th:text="${movie.primaryTitle}">Movie Title</a></h3>
+                <h3><a th:href="@{/movie/{tconst}(tconst=${movie.tconst})}" th:text="${movie.primaryTitle}">Movie
+                    Title</a></h3>
                 <p><strong>Type:</strong> <span th:text="${movie.titleType}">Title Type</span></p>
                 <p><strong>Start Year:</strong> <span th:text="${movie.startYear}">Start Year</span></p>
-                <p><strong>End Year:</strong> <span th:text="${movie.endYear != null ? movie.endYear : 'N/A'}">End Year</span></p>
+                <p><strong>End Year:</strong> <span
+                        th:text="${movie.endYear != null ? movie.endYear : 'N/A'}">End Year</span></p>
                 <p><strong>Runtime:</strong> <span th:text="${movie.runtimeMinutes}">Runtime</span> minutes</p>
                 <p><strong>Adult Only:</strong> <span th:text="${movie.isAdult}">Adult Only</span></p>
             </div>

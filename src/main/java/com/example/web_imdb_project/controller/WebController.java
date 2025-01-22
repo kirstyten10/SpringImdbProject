@@ -1,5 +1,7 @@
-package com.example.web_imdb_project;
+package com.example.web_imdb_project.controller;
 
+import com.example.web_imdb_project.model.Movies;
+import com.example.web_imdb_project.repository.MoviesRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

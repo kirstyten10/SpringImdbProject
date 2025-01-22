@@ -1,4 +1,4 @@
-package com.example.web_imdb_project;
+package com.example.web_imdb_project.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

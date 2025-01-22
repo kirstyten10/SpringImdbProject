@@ -1,5 +1,6 @@
-package com.example.web_imdb_project;
+package com.example.web_imdb_project.config;
 
+import com.example.web_imdb_project.WebImdbProjectApplication;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 

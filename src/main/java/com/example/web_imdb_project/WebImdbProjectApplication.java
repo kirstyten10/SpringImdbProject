@@ -1,5 +1,7 @@
 package com.example.web_imdb_project;
 
+import com.example.web_imdb_project.model.Movies;
+import com.example.web_imdb_project.repository.MoviesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -75,7 +77,7 @@ public class WebImdbProjectApplication {
 
                     // Parse runtimeMinutes
                     Integer runtimeMinutes = parseInteger(columns[7]);
-                    if (runtimeMinutes == null) {
+                    if (runtimeMinutes == null || runtimeMinutes < 30) {
                         continue;
                     }
 

@@ -1,28 +1,28 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>Movie Details</title>
-  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
-  <link rel="stylesheet" href="/style.css" />
+    <title>Movie Details</title>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+    <link href="/style.css" rel="stylesheet"/>
 </head>
 <body>
 <h1>Movie Details</h1>
 
 <div th:if="${movie}">
-  <h2 th:text="${movie.primaryTitle}">Movie Title</h2>
-  <p><strong>Original Title:</strong> <span th:text="${movie.originalTitle}">Original Title</span></p>
-  <p><strong>Type:</strong> <span th:text="${movie.titleType}">Title Type</span></p>
-  <p><strong>Start Year:</strong> <span th:text="${movie.startYear}">Start Year</span></p>
-  <p><strong>End Year:</strong> <span th:text="${movie.endYear != null ? movie.endYear : 'N/A'}">End Year</span></p>
-  <p><strong>Runtime:</strong> <span th:text="${movie.runtimeMinutes}">Runtime</span> minutes</p>
-  <p><strong>Adult Only:</strong> <span th:text="${movie.isAdult}">Adult Only</span></p>
+    <h2 th:text="${movie.primaryTitle}">Movie Title</h2>
+    <p><strong>Original Title:</strong> <span th:text="${movie.originalTitle}">Original Title</span></p>
+    <p><strong>Type:</strong> <span th:text="${movie.titleType}">Title Type</span></p>
+    <p><strong>Start Year:</strong> <span th:text="${movie.startYear}">Start Year</span></p>
+    <p><strong>End Year:</strong> <span th:text="${movie.endYear != null ? movie.endYear : 'N/A'}">End Year</span></p>
+    <p><strong>Runtime:</strong> <span th:text="${movie.runtimeMinutes}">Runtime</span> minutes</p>
+    <p><strong>Adult Only:</strong> <span th:text="${movie.isAdult}">Adult Only</span></p>
 </div>
 
 <div th:if="${error}">
-  <p th:text="${error}">Movie not found</p>
+    <p th:text="${error}">Movie not found</p>
 </div>
 
-<a href="/search" >Back to Search</a>
+<a href="/search">Back to Search</a>
 
 </body>
 </html>
