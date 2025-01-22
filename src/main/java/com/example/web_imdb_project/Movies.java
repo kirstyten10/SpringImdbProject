@@ -1,12 +1,11 @@
 package com.example.web_imdb_project;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
 
 @Entity
 @Data
@@ -31,10 +30,5 @@ public class Movies {
     private Integer endYear;
 
     private Integer runtimeMinutes;
-
-    //@ElementCollection
-    //@CollectionTable(name = "movie_genres", joinColumns = @JoinColumn(name = "movie_id"))
-    //@Column(name = "genre")
-    //private List<String> genres;
 }
 

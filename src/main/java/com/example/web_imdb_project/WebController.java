@@ -36,12 +36,4 @@ public class WebController {
         model.addAttribute("error", "Movie not found.");
         return "error";
     }
-
-    /*
-    public String searchParam() {
-        @Query("SELECT u FROM User u WHERE u.status = 1")
-        Collection<Movies> findAllActiveUsers();
-    }
-    */
-
 }
