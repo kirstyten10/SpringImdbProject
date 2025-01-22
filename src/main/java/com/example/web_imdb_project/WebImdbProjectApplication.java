@@ -10,8 +10,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.Arrays;
-import java.util.List;
 
 @SpringBootApplication
 public class WebImdbProjectApplication {
@@ -81,10 +79,6 @@ public class WebImdbProjectApplication {
                         continue;
                     }
 
-                    // Clean and validate genres
-                    String[] genreArray = cleanGenres(columns[8]);
-                    List<String> genres = Arrays.asList(genreArray);
-
                     // Save to the database
                     moviesRepository.save(Movies.builder()
                             .tconst(tconst)
@@ -113,14 +107,6 @@ public class WebImdbProjectApplication {
     // Clean strings by trimming and handling nulls
     private String cleanString(String value) {
         return (value != null && !value.trim().isEmpty() && !"\\N".equals(value.trim())) ? value.trim() : "";
-    }
-
-    // Clean and handle genres (removes empty or invalid genres)
-    private String[] cleanGenres(String genreString) {
-        if (genreString == null || genreString.isEmpty() || "\\N".equals(genreString)) {
-            return new String[0]; // Return empty array if genres are missing or invalid
-        }
-        return genreString.split(",");
     }
 
     private Integer parseInteger(String value) {
