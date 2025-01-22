@@ -23,7 +23,7 @@ public class WebImdbProjectApplication {
 
     public void readAndSaveData() {
         try (InputStream inputStream = WebImdbProjectApplication.class
-                .getClassLoader().getResourceAsStream("title_basics.tsv");
+                .getClassLoader().getResourceAsStream("title.basics.tsv");
              BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
 
             if (reader != null) {
@@ -101,7 +101,7 @@ public class WebImdbProjectApplication {
 
                 System.out.println("Processed " + processedRows + " rows.");
             } else {
-                System.err.println("File not found: title_basics.tsv");
+                System.err.println("File not found: title.basics.tsv");
             }
         } catch (IOException e) {
             System.err.println("Error reading the file: " + e.getMessage());
