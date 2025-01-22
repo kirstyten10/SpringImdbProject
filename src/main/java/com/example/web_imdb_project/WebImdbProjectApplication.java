@@ -31,7 +31,7 @@ public class WebImdbProjectApplication {
                 int lineCount = 0;
                 int processedRows = 0;
 
-                while ((line = reader.readLine()) != null && processedRows < 100) {
+                while ((line = reader.readLine()) != null) {
                     // Skip the header row
                     if (lineCount == 0) {
                         lineCount++;
@@ -52,6 +52,14 @@ public class WebImdbProjectApplication {
                         continue; // Skip this row if 'tconst' or 'primaryTitle' is empty
                     }
 
+                    if (primaryTitle.length() > 255) {
+                        primaryTitle = primaryTitle.substring(0, 255);
+                    }
+
+                    if (originalTitle.length() > 255) {
+                        originalTitle = originalTitle.substring(0, 255);
+                    }
+
                     boolean isAdult = "1".equals(columns[4].trim());
 
                     // Parse startYear
@@ -67,6 +75,9 @@ public class WebImdbProjectApplication {
 
                     // Parse runtimeMinutes
                     Integer runtimeMinutes = parseInteger(columns[7]);
+                    if (runtimeMinutes == null) {
+                        continue;
+                    }
 
                     // Clean and validate genres
                     String[] genreArray = cleanGenres(columns[8]);
