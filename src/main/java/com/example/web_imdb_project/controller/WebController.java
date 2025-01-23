@@ -7,6 +7,7 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
@@ -50,7 +51,6 @@ public class WebController {
                     builder.equal(root.get("titleType"), titleType));
         }
 
-
         List<Movies> searchResults;
         if (spec != null) {
             searchResults = (List<Movies>) moviesRepository.findAll(spec, sort);
@@ -63,5 +63,14 @@ public class WebController {
 
         return "search";
     }
-}
 
+    @GetMapping("/movie/{tconst}")
+    public String viewMovieDetails(@PathVariable String tconst, Model model) {
+        Movies movie = moviesRepository.findByTconst(tconst);  // Assuming there's a method to find by tconst
+        if (movie != null) {
+            model.addAttribute("movie", movie);
+            return "movieDetails";  // This is the view where you display the movie details
+        }
+        return "error";  // Error page if the movie is not found
+    }
+}

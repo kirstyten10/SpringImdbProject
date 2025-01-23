@@ -15,4 +15,7 @@ public interface MoviesRepository extends JpaRepository<Movies, Long>, JpaSpecif
     List<Movies> searchMovies(String query);
 
     List<Movies> findAll(Sort sort);
+
+    Movies findByTconst(String tconst);
+
 }
