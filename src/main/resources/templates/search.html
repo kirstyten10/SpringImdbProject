@@ -9,8 +9,10 @@
 <h1>Search for Movies</h1>
 
 <form action="#" method="get" th:action="@{/search}">
-    <label for="query">Movie Title or Type</label>
-    <input id="query" name="query" type="text"/>
+    <div class="form-row full-width">
+        <label for="query">Movie Title or Type</label>
+        <input id="query" name="query" type="text"/>
+    </div>
 
     <!-- Sorting options -->
     <label for="sort">Sort By:</label>
