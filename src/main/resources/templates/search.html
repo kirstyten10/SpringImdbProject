@@ -11,6 +11,21 @@
 <form action="#" method="get" th:action="@{/search}">
     <label for="query">Movie Title or Type</label>
     <input id="query" name="query" type="text"/>
+
+    <!-- Sorting options -->
+    <label for="sort">Sort By:</label>
+    <select id="sort" name="sort">
+        <option value="primaryTitle">Title</option>
+        <option value="startYear">Start Year</option>
+        <option value="runtimeMinutes">Runtime</option>
+    </select>
+
+    <label for="sortDirection">Sort Direction:</label>
+    <select id="sortDirection" name="sortDirection">
+        <option value="asc">Ascending</option>
+        <option value="desc">Descending</option>
+    </select>
+
     <button type="submit">Search</button>
 </form>
 
