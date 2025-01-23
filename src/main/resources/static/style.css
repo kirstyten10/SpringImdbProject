@@ -18,29 +18,6 @@ h2 {
   margin-bottom: 20px;
 }
 
-/* Table styling
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-  background-color: #f3f3f3;
-}
-
-table th, table td {
-  border: 1px solid #ccc;
-  padding: 10px;
-  text-align: center;
-}
-
-table th {
-  color: #deb522;
-}
-
-table tr:nth-child(even) {
-  background-color: #f3f3f3;
-}
-*/
-
 /* Form styling */
 form {
   background-color: #8A8A8A;
@@ -49,39 +26,24 @@ form {
   border-radius: 5px;
   max-width: 50%;
   width: 100%;
-}
-
-form table {
-  width: 100%;
-}
-
-form input, form select, form button {
-  width: 100%;
-  padding: 4px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
+  margin: 0 auto;
+  text-align: center;
 }
 
 form button {
-  background-color: #3F4244;
-  color: #128bb5;
-  border: none;
-  cursor: pointer;
-  border-radius: 12px;
-  font-weight: bold;
+    width: 70%;
+    padding: 10px;
+    background-color: #3F4244;
+    color: #128bb5;
+    border: none;
+    cursor: pointer;
+    border-radius: 12px;
+    font-weight: bold;
+    margin-top: 10px;
 }
 
 form button:hover {
   background-color: #0056b3;
-}
-
-label {
-  font-weight: bold;
-}
-
-p {
-  color: #fcf7f7;
 }
 
 /* Styling for the movie details */
