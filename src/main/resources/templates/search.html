@@ -26,7 +26,7 @@
                 <p><strong>End Year:</strong> <span
                         th:text="${movie.endYear != null ? movie.endYear : 'N/A'}">End Year</span></p>
                 <p><strong>Runtime:</strong> <span th:text="${movie.runtimeMinutes}">Runtime</span> minutes</p>
-                <p><strong>Adult Only:</strong> <span th:text="${movie.isAdult}">Adult Only</span></p>
+                <p><strong>Adult Only:</strong> <span th:text="${movie.isAdult} ? 'Yes' : 'No'">Adult Only</span></p>
             </div>
         </li>
     </ul>

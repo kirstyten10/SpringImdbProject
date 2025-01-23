@@ -18,7 +18,7 @@ h2 {
   margin-bottom: 20px;
 }
 
-/* Table styling */
+/* Table styling
 table {
   width: 100%;
   border-collapse: collapse;
@@ -39,6 +39,7 @@ table th {
 table tr:nth-child(even) {
   background-color: #f3f3f3;
 }
+*/
 
 /* Form styling */
 form {
@@ -91,6 +92,7 @@ p {
   border-radius: 25px;
   margin-top: 1px;
   border: 1px solid #0c0b00;
+  text-align: center;
 }
 
 .movie-item {
